@@ -1,0 +1,19 @@
+
+<div *ngFor="let munka of munka$ | async">
+     <ul>
+         <li>{{ munka.id }}</li>
+         <li>{{ munka.tipus }}</li>
+     </ul>
+ </div> 
+
+<div>
+    <label for="id">id:</label>
+    <input type="text" id="id" id="id">
+    <label for="tipus">tipus:</label>
+    <input type="text" tipus="tipus" tipus="tipus">
+    <button type="button" class="btn btn-danger" >" munka hozzáadása</button>
+    <button type="button" class="btn btn-danger" >" munka törlése </button>
+</div>
+<div>
+    
+</div>

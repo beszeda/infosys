@@ -1,0 +1,14 @@
+<!--<div *ngFor="let gep of gepek$ | async">
+    <ul>
+        <li>{{ gep.id }}</li>
+        <li>{{ gep.tipus }}</li>
+    </ul>
+</div> -->
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label for="id">id:</label>
+    <input type="number" id="id" formControlName="id">
+    <label for="tipus">tipus:</label>
+    <input type="text" tipus="tipus" formControlName="tipus">
+    <button type="submit" class="btn btn-danger">Gép hozzáadása</button>
+</form>
