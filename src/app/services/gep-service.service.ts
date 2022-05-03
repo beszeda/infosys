@@ -30,7 +30,7 @@ export class GepServiceService {
 
   delGepek(id: Pick<Gep, 'id'>): Observable<{}> {
 
-    return this.http.delete<Gep[]>('/api/gepek', { responseType: 'json' }).pipe(
+    return this.http.delete<Gep>('/api/gepek/'+id,this.httpOptions ).pipe(
       catchError(this.ErrorHandler)
     );
   }

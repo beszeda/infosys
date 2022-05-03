@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, first, Observable, throwError } from 'rxjs';
 import { Munka } from '../models/Munka';
@@ -7,6 +7,10 @@ import { Munka } from '../models/Munka';
   providedIn: 'root'
 })
 export class MunkaServiceService {
+
+  httpOptions: { headers: HttpHeaders } = {
+    headers: new HttpHeaders({ "Content-Type": "application/json" }),
+  }
 
   constructor(private http: HttpClient) { }
 
@@ -17,7 +21,20 @@ export class MunkaServiceService {
     );
   }
 
+  addMunka(formData: Partial<Munka>): Observable<Munka> {
 
+    return this.http.post<Munka>('/api/munkak', { id: formData.id, tipus: formData.tipus }, this.httpOptions).pipe(
+      first(),
+      catchError(this.ErrorHandler)
+    );
+  }
+
+  delMunka(id: Pick<Munka, 'id'>): Observable<{}> {
+
+    return this.http.delete<Munka>('/api/munkak/'+id,this.httpOptions ).pipe(
+      catchError(this.ErrorHandler)
+    );
+  }
 
 
   private ErrorHandler(error: HttpErrorResponse): Observable<never> {

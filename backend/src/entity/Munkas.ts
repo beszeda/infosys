@@ -1,5 +1,5 @@
 import { on } from "events";
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany, PrimaryColumn} from "typeorm";
 import { Munka } from "./Munka";
 
 @Entity()

@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { MunkasComponent } from './munkas/munkas.component';
 import { MunkaComponent } from './munka/munka.component';
 import { GepComponent } from './gep/gep.component';
-import { ListaComponent } from './lista/lista.component';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { ListaComponent } from './lista/lista.component';
     MunkasComponent,
     MunkaComponent,
     GepComponent,
-    ListaComponent
+  
   ],
   imports: [
     BrowserModule,

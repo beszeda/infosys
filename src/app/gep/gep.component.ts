@@ -32,13 +32,14 @@ export class GepComponent implements OnInit {
   }
 
   fetchAll(): Observable<Gep[]> {
-    console.log("asdasd ");
     return this.gepService.getGepek();
   }
 
   delGep(id: Pick<Gep, 'id'>): void {
-    console.log("asd");
-    this.gepService.delGepek(id);
+
+    this.gepService.delGepek(id).subscribe(() => (
+      this.gepek$ = this.fetchAll()
+    ));
   }
 
   getId(): Observable<Gep> {

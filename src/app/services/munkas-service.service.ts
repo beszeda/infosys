@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse,HttpHeaders  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, first, Observable, throwError } from 'rxjs';
 import { Munkas } from '../models/Munkas';
@@ -8,14 +8,34 @@ import { Munkas } from '../models/Munkas';
 })
 export class MunkasServiceService {
 
+  httpOptions: { headers: HttpHeaders } = {
+    headers: new HttpHeaders({ "Content-Type": "application/json" }),
+  }
+
   constructor(private http: HttpClient) { }
 
 
   getMunkas(): Observable<Munkas[]>{
-    return this.http.get<Munkas[]>('/api/munka', {responseType: 'json'}).pipe(
+    return this.http.get<Munkas[]>('/api/munkasok', {responseType: 'json'}).pipe(
       catchError(this.ErrorHandler)
     );
   }
+
+  delMunkas(id: Pick<Munkas, 'id'>): Observable<{}> {
+
+    return this.http.delete<Munkas>('/api/munkasok/'+id,this.httpOptions ).pipe(
+      catchError(this.ErrorHandler)
+    );
+  }
+
+  addMunkas(formData: Partial<Munkas>): Observable<Munkas> {
+
+    return this.http.post<Munkas>('/api/munkasok/', {id: formData.id, firstName: formData.firstName, lastName: formData.lastName, oraber: formData.oraber, szakkepzetseg: formData.szakkepzetseg, statusz: formData.statusz}, this.httpOptions).pipe(
+      first(),
+      catchError(this.ErrorHandler)
+    );
+  }
+
 
 
 

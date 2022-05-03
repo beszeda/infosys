@@ -1,19 +1,24 @@
-
-<div *ngFor="let munka of munka$ | async">
-     <ul>
-         <li>{{ munka.id }}</li>
-         <li>{{ munka.tipus }}</li>
-     </ul>
- </div> 
-
-<div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
     <label for="id">id:</label>
-    <input type="text" id="id" id="id">
+    <input style="width: 70px" type="number" id="id" formControlName="id">
     <label for="tipus">tipus:</label>
-    <input type="text" tipus="tipus" tipus="tipus">
-    <button type="button" class="btn btn-danger" >" munka hozzáadása</button>
-    <button type="button" class="btn btn-danger" >" munka törlése </button>
-</div>
-<div>
-    
-</div>
+    <input type="text" tipus="tipus" formControlName="tipus">
+    <button type="submit" class="btn btn-success" >" munka hozzáadása</button>
+</form>
+
+<h1>Munkák listája:</h1>
+<div *ngFor="let munka of munka$ | async">
+    <ul>
+        <table>
+            <tr>
+                <td style="width: 150px;">
+                    <li>{{ munka.id }}</li>
+                    <li>{{ munka.tipus }}</li>
+                </td>
+                <td>
+                    <button class="btn btn-danger"  (click)="delMunka(munka.id)">Munka törlése</button>
+                </td>
+            </tr>
+        </table>
+    </ul>
+</div> 
