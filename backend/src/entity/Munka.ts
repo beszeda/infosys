@@ -11,10 +11,10 @@ export class Munka {
     @Column()
     tipus: string;
 
-    @OneToMany(() => Feladat,feladat => feladat.munka)
+    @OneToMany(() => Feladat,(feladat) => feladat.munka)
     feladatok:Feladat[];  
 
-    @ManyToOne(() => Munkas,munkas => munkas.munkak)
+    @ManyToOne(() => Munkas,(munkas) => munkas.munkak)
     munkas: Munkas;
 
 }

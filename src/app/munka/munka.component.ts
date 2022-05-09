@@ -9,10 +9,15 @@ import { MunkaServiceService } from '../services/munka-service.service';
   styleUrls: ['./munka.component.css']
 })
 export class MunkaComponent implements OnInit {
+ 
   munka$! : Observable<Munka[]>;
   form!: FormGroup;
+  static munkaService: MunkaServiceService;
 
   constructor(private munkaService: MunkaServiceService,  private formBuilder: FormBuilder) { }
+
+
+
 
   ngOnInit(): void {
     this.munka$ = this.fetchAll();
@@ -33,6 +38,9 @@ export class MunkaComponent implements OnInit {
   fetchAll(): Observable<Munka[]>{
     return this.munkaService.getMunka();
   }
+
+
+
 
   delMunka(id: Pick<Munka, 'id'>): void {
 

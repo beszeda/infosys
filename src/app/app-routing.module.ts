@@ -4,6 +4,7 @@ import { GepComponent } from './gep/gep.component';
 import { ListaComponent } from './lista/lista.component';
 import { MunkaComponent } from './munka/munka.component';
 import { MunkasComponent } from './munkas/munkas.component';
+import  {FeladatComponent} from './feladat/feladat.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
   {
     path: "listak",
     component: ListaComponent
+  }
+  ,
+  {
+    path: "feladatok",
+    component: FeladatComponent
   }
 
   

@@ -12,7 +12,7 @@ export class Feladat {
     @Column()
     nev: string;
 
-   @ManyToOne(()=> Munka,munka =>munka.feladatok )
+   @ManyToOne(()=> Munka,(munka) =>munka.feladatok )
    munka:Munka;
 
    @OneToOne(() => Gep)

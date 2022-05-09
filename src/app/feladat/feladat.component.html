@@ -1,0 +1,34 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label for="id">id:</label>
+    <input style="width: 70px" type="number" id="id" formControlName="id">
+    <label for="nev">nev:</label>
+    <input type="text" nev="nev" formControlName="nev">
+    <button type="submit" class="btn btn-success">" feladat hozzáadása</button>
+
+    <div >
+        <label for="munkak">munkahoz rendelés :</label>
+
+        <select formControlName="munkaid" munkaid="munkaid"  name="munkak" id="munkaSelect">
+            <option  *ngFor="let munka of munka$ | async"  value="{{munka.id}}">{{munka.tipus}}</option>
+            
+        </select>
+    </div>
+</form>
+
+<h1>feladatok listája:</h1>
+<div *ngFor="let feladat of feladat$ | async">
+    <ul>
+        <table>
+            <tr>
+                <td style="width: 150px;">
+                    <li>Feladat id:  {{ feladat.id }}</li>
+                    <li>Feladat nev:  {{ feladat.nev }}</li>
+                    <li>Munka id:  {{ feladat.munkaId }}</li>
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="delFeladat(feladat.id)">feladat törlése</button>
+                </td>
+            </tr>
+        </table>
+    </ul>
+</div>

@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { MunkasComponent } from './munkas/munkas.component';
 import { MunkaComponent } from './munka/munka.component';
 import { GepComponent } from './gep/gep.component';
+import { FeladatComponent } from './feladat/feladat.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { GepComponent } from './gep/gep.component';
     MunkasComponent,
     MunkaComponent,
     GepComponent,
+    FeladatComponent
   
   ],
   imports: [
